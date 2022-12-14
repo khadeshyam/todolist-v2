@@ -60,7 +60,7 @@ app.get('/:customListName', (req, res) => {
         if(!err){
             if(!foundList){
                 //create a new list
-                console.log("list not found");
+                
                 const list = new List({
                     name:customListname,
                     items:[]
@@ -70,7 +70,7 @@ app.get('/:customListName', (req, res) => {
             }
             else{
             //show existing list
-            console.log("list found");
+           
             res.render("list",{listTitle:foundList.name,items:foundList.items});
             }
         }
@@ -104,12 +104,11 @@ app.post("/delete",(req,res)=>{
     
     const checkedItemId = req.body.checkbox;
     const listName = req.body.listName;
-    console.log(req.body);
+  
 
     if(listName === "Today"){
         Item.findByIdAndRemove(checkedItemId,(err)=>{
             if(!err){
-                console.log("Sucessfully deleted the item");
                 res.redirect("/");
             }
         });
