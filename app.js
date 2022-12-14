@@ -32,23 +32,11 @@ const Item = mongoose.model("Item", itemSchema);
 
 const List = mongoose.model("List",listSchema);
 
-const item1 = new Item({
-    name: "My name is Mongoose"
-})
-const item2 = new Item({
-    name: "My name is Mongod"
-})
-const item3 = new Item({
-    name: "My name is MongoDB"
-});
-
-
 
 app.get("/", (req, res) => {
 
     Item.find({}, (err, foundItems) => {
           res.render("list",{listTitle:"Today",items:foundItems});
-    
     })
 });
 
